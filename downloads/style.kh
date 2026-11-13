@@ -1,0 +1,4 @@
+# 配色と、必要な場合の追加CSS
+language("ja")
+theme("#1e684d")
+css("body { background: #f5f6ef; }")
