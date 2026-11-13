@@ -25,7 +25,9 @@
 <meta name="twitter:image" content="https://uni-tadayasu.github.io/kh-language/assets/hero-prism.webp">
 <link rel="icon" href="assets/kh.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/editor-assist.css">
 <script defer src="assets/playground.js"></script>
+<script defer src="assets/editor-assist.js"></script>
 <script defer src="assets/releases.js"></script>
 <script type="application/ld+json">
 {
@@ -45,7 +47,7 @@
       "url": "https://uni-tadayasu.github.io/kh-language/#download",
       "applicationCategory": "DeveloperApplication",
       "operatingSystem": "Windows 10, Windows 11 (x64)",
-      "downloadUrl": "https://uni-tadayasu.github.io/kh-language/downloads/KH_IDE_0.3_Windows_x64_Command_Reference.zip",
+      "downloadUrl": "https://uni-tadayasu.github.io/kh-language/downloads/KH_IDE_0.3_Editor_Assist_Plus_Windows_x64.zip",
       "description": "KHスクリプトを編集・実行し、Windows用EXEまたはHTML・CSS・JavaScriptを生成する統合開発環境。"
     }
   ]
@@ -73,7 +75,7 @@
         <h1 id="hero-title"><span class="extension">.kh</span> から、<br><span class="web-word">Web</span> へ。</h1>
         <p class="hero-description">英語の命令に、日本語の名前。<br>KH言語で、あなたのホームページを。</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="downloads/KH_IDE_0.3_Windows_x64_Command_Reference.zip" data-platform="windows" download><span class="icon" aria-hidden="true">↓</span> IDEをダウンロード</a>
+          <a class="button button-primary" href="downloads/KH_IDE_0.3_Editor_Assist_Plus_Windows_x64.zip" data-platform="windows" download><span class="icon" aria-hidden="true">↓</span> IDEをダウンロード</a>
           <a class="button button-quiet" href="#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
         </div>
         <p class="compat">Windows用IDE <span>·</span> <a href="#portable">Mac・Linux向けCLI</a></p>
@@ -120,6 +122,7 @@
       <div class="lab-file-bar"><div class="lab-file-actions"><button class="tool-button" type="button" id="kh-open">.kh を開く</button><input type="file" id="kh-file" accept=".kh,text/plain" hidden><button class="tool-button" type="button" id="kh-save">.kh を保存</button><button class="tool-button" type="button" id="kh-export">HTMLを保存</button></div></div>
       <div class="lab-status"><span id="kh-diagnostic" role="status" aria-live="polite">実行できます</span><span class="shortcut"><kbd>Ctrl</kbd> / <kbd>⌘</kbd> + <kbd>Enter</kbd></span></div>
     </div>
+    <p class="lab-note"><kbd>Ctrl</kbd> + <kbd>Space</kbd> で入力候補、<kbd>F2</kbd> でひな形を挿入できます。命令にマウスを合わせると説明が出ます。</p>
     <p class="lab-note">ブラウザー版は基本命令と単一HTMLの保存に対応。複数の <code>.kh</code> や独自CSS・JavaScriptを使うサイトは、Windows用IDEまたはMac・Linux向けCLIで出力できます。</p>
   </section>
 
@@ -149,19 +152,20 @@
         <p class="label accent-label">DOWNLOAD</p>
         <h2 id="download-title">KH Web IDE</h2>
         <p>ZIPを展開して <code>KH_IDE.exe</code> を起動。<br class="desktop-only">サンプルを開いて、そのまま制作を始められます。</p>
-        <a class="button button-primary" href="downloads/KH_IDE_0.3_Windows_x64_Command_Reference.zip" data-platform="windows" download><span class="icon" aria-hidden="true">↓</span> Windows用IDEをダウンロード</a>
-        <p class="compat"><span data-release-version>v0.3.0</span> <span>·</span> Windows 10 / 11 <span>·</span> x64 <span>·</span> <span data-release-size="windows">約135 KiB</span></p>
+        <a class="button button-primary" href="downloads/KH_IDE_0.3_Editor_Assist_Plus_Windows_x64.zip" data-platform="windows" download><span class="icon" aria-hidden="true">↓</span> Windows用IDEをダウンロード</a>
+        <p class="compat"><span data-release-version>v0.3.0</span> <span>·</span> Windows 10 / 11 <span>·</span> x64 <span>·</span> <span data-release-size="windows">約165 KiB</span></p>
       </div>
       <div class="download-keys">
         <div><kbd>F1</kbd><span>コマンド一覧を開く</span></div>
+        <div><kbd>F2</kbd><span>命令のひな形を挿入</span></div>
         <div><kbd>F5</kbd><span>スクリプトを実行</span></div>
         <div><kbd>F7</kbd><span>Windows用 <code>.exe</code> を生成</span></div>
         <div><kbd>F8</kbd><span>HTML・CSS・JavaScriptを出力</span></div>
-        <details class="hash"><summary>ダウンロードの確認用 SHA-256</summary><code data-release-hash="windows">af0d4c4e00e2c74618b3222ef4c54d3f63877421d81d713965043cd33c2c1e81</code></details>
+        <details class="hash"><summary>ダウンロードの確認用 SHA-256</summary><code data-release-hash="windows">c57627838f9baffd40c3edea9ef3e05be7c55b6f431bf3c33a3588420b92d491</code></details>
       </div>
       <div class="release-notes">
         <div><h3>リリース情報</h3><time id="release-date" datetime="2026-11-13">2026/11/13</time></div>
-        <p id="release-notes">ウェブ用の命令と複数の .kh の読み込みに対応。Windows版はF8でHTML・CSS・JavaScriptを出力できます。Mac・Linux向けのCLIも用意しました。</p>
+        <p id="release-notes">Windows版IDEに入力候補、F2でのひな形挿入、マウスを合わせたときの命令説明、構文の色分けと文法エラーの赤い波線を追加しました。</p>
       </div>
       <div class="portable-copy" id="portable">
         <h3>Mac・Linuxで使う</h3>

@@ -1,0 +1,47 @@
+.kh-assist-list,.kh-assist-tip{
+  position:fixed;
+  z-index:20;
+  max-width:calc(100vw - 16px);
+  border:1px solid #594567;
+  border-radius:7px;
+  background:#21182b;
+  color:#eee5f3;
+  box-shadow:0 8px 30px #0a0612a8;
+}
+.kh-assist-list[hidden],.kh-assist-tip[hidden]{display:none}
+.kh-assist-list{
+  width:min(300px,calc(100vw - 16px));
+  max-height:min(235px,45vh);
+  overflow:auto;
+  overscroll-behavior:contain;
+  padding:4px;
+}
+.kh-assist-option{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:10px;
+  padding:4px 8px;
+  border-radius:4px;
+  cursor:pointer;
+}
+.kh-assist-option:hover,.kh-assist-option[aria-selected="true"]{background:#3b2a48}
+.kh-assist-name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#ffcb93;font-size:13px}
+.kh-assist-kind{flex:none;color:#c0afcf;font-size:11px}
+.kh-assist-tip{width:max-content;max-width:min(380px,calc(100vw - 16px));padding:9px 12px;pointer-events:none}
+.kh-assist-signature{color:#ffcb93;font-size:13px;overflow-wrap:anywhere}
+.kh-assist-explanation{margin:4px 0 0;line-height:1.5;font-size:12px;overflow-wrap:anywhere}
+.kh-assist-mirror{
+  position:fixed;
+  top:0;
+  left:-10000px;
+  visibility:hidden;
+  pointer-events:none;
+  width:max-content;
+  max-width:none;
+  white-space:pre;
+  margin:0;
+  padding:0;
+  border:0;
+}
+.kh-assist-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}

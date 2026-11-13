@@ -1,11 +1,11 @@
 {
   "version": "0.3.0",
   "date": "2026-11-13",
-  "notes": "ウェブ用の命令と複数の .kh の読み込みに対応。Windows版はF8でHTML・CSS・JavaScriptを出力できます。Mac・Linux向けのCLIも用意しました。",
+  "notes": "Windows版IDEに入力候補、F2でのひな形挿入、マウスを合わせたときの命令説明、構文の色分けと文法エラーの赤い波線を追加しました。",
   "windows": {
-    "url": "downloads/KH_IDE_0.3_Windows_x64_Command_Reference.zip",
-    "bytes": 137755,
-    "sha256": "af0d4c4e00e2c74618b3222ef4c54d3f63877421d81d713965043cd33c2c1e81"
+    "url": "downloads/KH_IDE_0.3_Editor_Assist_Plus_Windows_x64.zip",
+    "bytes": 169460,
+    "sha256": "c57627838f9baffd40c3edea9ef3e05be7c55b6f431bf3c33a3588420b92d491"
   },
   "portable": {
     "url": "downloads/KH_Language_Portable_0.3.zip",
