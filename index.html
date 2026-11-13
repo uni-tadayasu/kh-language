@@ -45,7 +45,7 @@
       "url": "https://uni-tadayasu.github.io/kh-language/#download",
       "applicationCategory": "DeveloperApplication",
       "operatingSystem": "Windows 10, Windows 11 (x64)",
-      "downloadUrl": "https://uni-tadayasu.github.io/kh-language/downloads/KH_Language_Web_IDE_0.3_Windows_x64.zip",
+      "downloadUrl": "https://uni-tadayasu.github.io/kh-language/downloads/KH_IDE_0.3_Windows_x64_Command_Reference.zip",
       "description": "KHスクリプトを編集・実行し、Windows用EXEまたはHTML・CSS・JavaScriptを生成する統合開発環境。"
     }
   ]
@@ -59,7 +59,7 @@
     <a class="brand" href="#top" aria-label="KH言語 トップ"><img src="assets/kh.svg" width="37" height="37" alt=""><span>KH<span class="brand-ja">言語</span></span></a>
     <nav aria-label="メインメニュー">
       <a href="#playground">試す</a>
-      <a href="#guide">文法</a>
+      <a href="reference/">コマンド一覧</a>
       <a class="nav-download" href="#download">IDEを入手 <span aria-hidden="true">↘</span></a>
     </nav>
   </div>
@@ -73,7 +73,7 @@
         <h1 id="hero-title"><span class="extension">.kh</span> から、<br><span class="web-word">Web</span> へ。</h1>
         <p class="hero-description">英語の命令に、日本語の名前。<br>KH言語で、あなたのホームページを。</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="downloads/KH_Language_Web_IDE_0.3_Windows_x64.zip" data-platform="windows" download><span class="icon" aria-hidden="true">↓</span> IDEをダウンロード</a>
+          <a class="button button-primary" href="downloads/KH_IDE_0.3_Windows_x64_Command_Reference.zip" data-platform="windows" download><span class="icon" aria-hidden="true">↓</span> IDEをダウンロード</a>
           <a class="button button-quiet" href="#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
         </div>
         <p class="compat">Windows用IDE <span>·</span> <a href="#portable">Mac・Linux向けCLI</a></p>
@@ -129,6 +129,7 @@
         <p class="label accent-label">LANGUAGE GUIDE</p>
         <h2 id="guide-title">ひとつの文法で、<br>ページを組み立てる。</h2>
         <p>ページの内容や共通の配色を <code>.kh</code> にまとめられます。関連ファイルが増えたら、<code>use</code> で読み込みます。</p>
+        <a class="text-link" href="reference/">すべてのコマンドと実行例 <span aria-hidden="true">↗</span></a><br>
         <a class="text-link" href="downloads/index.kh" download>サンプルの index.kh <span aria-hidden="true">↓</span></a>
         <details class="guide-details"><summary>一緒に保存する .kh ファイル</summary><div><a href="downloads/style.kh" download>style.kh</a><a href="downloads/actions.kh" download>actions.kh</a><a href="downloads/about.kh" download>about.kh</a></div></details>
       </div>
@@ -148,14 +149,15 @@
         <p class="label accent-label">DOWNLOAD</p>
         <h2 id="download-title">KH Web IDE</h2>
         <p>ZIPを展開して <code>KH_IDE.exe</code> を起動。<br class="desktop-only">サンプルを開いて、そのまま制作を始められます。</p>
-        <a class="button button-primary" href="downloads/KH_Language_Web_IDE_0.3_Windows_x64.zip" data-platform="windows" download><span class="icon" aria-hidden="true">↓</span> Windows用IDEをダウンロード</a>
-        <p class="compat"><span data-release-version>v0.3.0</span> <span>·</span> Windows 10 / 11 <span>·</span> x64 <span>·</span> <span data-release-size="windows">約113 KiB</span></p>
+        <a class="button button-primary" href="downloads/KH_IDE_0.3_Windows_x64_Command_Reference.zip" data-platform="windows" download><span class="icon" aria-hidden="true">↓</span> Windows用IDEをダウンロード</a>
+        <p class="compat"><span data-release-version>v0.3.0</span> <span>·</span> Windows 10 / 11 <span>·</span> x64 <span>·</span> <span data-release-size="windows">約135 KiB</span></p>
       </div>
       <div class="download-keys">
+        <div><kbd>F1</kbd><span>コマンド一覧を開く</span></div>
         <div><kbd>F5</kbd><span>スクリプトを実行</span></div>
         <div><kbd>F7</kbd><span>Windows用 <code>.exe</code> を生成</span></div>
         <div><kbd>F8</kbd><span>HTML・CSS・JavaScriptを出力</span></div>
-        <details class="hash"><summary>ダウンロードの確認用 SHA-256</summary><code data-release-hash="windows">0a595412067efa13037d4d9735ad23dae1193583d8bbf9921a8623f901fde20c</code></details>
+        <details class="hash"><summary>ダウンロードの確認用 SHA-256</summary><code data-release-hash="windows">af0d4c4e00e2c74618b3222ef4c54d3f63877421d81d713965043cd33c2c1e81</code></details>
       </div>
       <div class="release-notes">
         <div><h3>リリース情報</h3><time id="release-date" datetime="2026-11-13">2026/11/13</time></div>

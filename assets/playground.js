@@ -914,5 +914,13 @@ source.addEventListener("keydown", event => {
     run();
   }
 });
-selectMode("web");
+const params = new URLSearchParams(typeof location === "undefined" ? "" : location.search);
+const sampleCode = params.get("code");
+const sampleMode = params.get("mode");
+if (sampleCode && sampleCode.length <= 20000 && Object.hasOwn(documents, sampleMode)) {
+  documents[sampleMode].source = sampleCode;
+  selectMode(sampleMode);
+} else {
+  selectMode("web");
+}
 })();

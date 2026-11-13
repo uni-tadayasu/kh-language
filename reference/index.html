@@ -1,0 +1,794 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#100d17">
+<title>コマンドリファレンスと使い方 | KH言語</title>
+<meta name="description" content="KH言語の命令・演算子・Web制作コマンドを、書き方と実行結果付きで解説。Windows IDEとMac・Linux向けCLIの使い方も掲載。">
+<link rel="canonical" href="https://uni-tadayasu.github.io/kh-language/reference/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="コマンドリファレンスと使い方 | KH言語">
+<meta property="og:description" content="KH言語の命令・演算子・Web制作コマンドを、書き方と実行結果付きで解説。Windows IDEとMac・Linux向けCLIの使い方も掲載。">
+<meta property="og:url" content="https://uni-tadayasu.github.io/kh-language/reference/">
+<meta property="og:image" content="https://uni-tadayasu.github.io/kh-language/assets/hero-prism.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/kh.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/reference.css">
+<script defer src="../assets/reference.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<header class="site-header" id="top"><div class="shell header-inner">
+<a class="brand" href="../" aria-label="KH言語 トップ"><img src="../assets/kh.svg" width="37" height="37" alt=""><span>KH<span class="brand-ja">言語</span></span></a>
+<nav aria-label="メインメニュー"><a href="../#playground">試す</a><a class="nav-download" href="../#download">IDEを入手 <span aria-hidden="true">↘</span></a></nav>
+</div></header>
+<main id="main">
+<div class="ref-hero"><div class="shell">
+<p class="label accent-label">KH LANGUAGE 0.3</p>
+<h1>コマンドリファレンス</h1>
+<p>命令の書き方から、実行したときの結果まで。日本語の名前を使ったサンプルで確認できます。</p>
+</div></div>
+<div class="shell ref-layout">
+<aside class="ref-side" aria-label="リファレンスの目次">
+<h2>目次</h2><ul><li><a href="#basics">基本の書き方</a></li><li><a href="#operators">演算子</a></li><li><a href="#control">分岐・繰り返し・関数</a></li><li><a href="#web">ウェブ制作コマンド</a></li><li><a href="#windows">Windows IDEの操作</a></li><li><a href="#browser">ブラウザー版IDEの操作</a></li><li><a href="#cli">Mac・Linux向けCLI</a></li></ul>
+<a href="../downloads/KH_Command_Reference.txt" download>テキスト版をダウンロード <span aria-hidden="true">↓</span></a>
+</aside>
+<div class="ref-content">
+<div id="ref-search-bar" class="ref-search" hidden>
+<label for="ref-search">命令・操作を検索</label>
+<div><input type="search" id="ref-search" placeholder="例：repeat、CSS、F8" autocomplete="off"><button class="tool-button" id="ref-clear" type="button">クリア</button></div>
+<p id="ref-count" role="status" aria-live="polite"></p>
+</div>
+<section id="basics" data-group>
+<h2>基本の書き方</h2><p class="ref-intro">KHのソースはUTF-8の .kh ファイルです。命令は1行ずつ書き、英語の命令名は小文字で入力します。インデントは読みやすさのために使えます。</p>
+<article class="ref-entry" id="basics-1" data-entry>
+  <h3><a href="#basics-1">say</a></h3>
+  <p class="ref-scope">Windows IDE・CLI・ブラウザー版</p>
+  <pre class="ref-syntax"><code>say 式</code></pre>
+  <p class="ref-description">式の結果を1行表示します。コンソールを選んで実行すると確認できます。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>say &quot;こんにちは、KH！&quot;
+say 1 + 2</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">こんにちは、KH！
+3</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=console&amp;code=say+%22%E3%81%93%E3%82%93%E3%81%AB%E3%81%A1%E3%81%AF%E3%80%81KH%EF%BC%81%22%0Asay+1+%2B+2#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="basics-2" data-entry>
+  <h3><a href="#basics-2">変数への代入</a></h3>
+  <p class="ref-scope">Windows IDE・CLI・ブラウザー版</p>
+  <pre class="ref-syntax"><code>名前 = 値</code></pre>
+  <p class="ref-description">名前の右側に値や式を書きます。同じ名前にもう一度代入すると値が変わります。変数名・関数名・引数名には日本語や英字が使えます。名前の先頭には文字か _、2文字目以降には数字も使えます。大文字と小文字は区別されます。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>人数 = 2
+人数 = 人数 + 1
+say 人数</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">3</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=console&amp;code=%E4%BA%BA%E6%95%B0+%3D+2%0A%E4%BA%BA%E6%95%B0+%3D+%E4%BA%BA%E6%95%B0+%2B+1%0Asay+%E4%BA%BA%E6%95%B0#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="basics-3" data-entry>
+  <h3><a href="#basics-3">コメント</a></h3>
+  <p class="ref-scope">Windows IDE・CLI・ブラウザー版</p>
+  <pre class="ref-syntax"><code># コメント</code></pre>
+  <p class="ref-description">行頭や命令の後ろに # を置くと、同じ行の残りはコメントになります。二重引用符の中の # は文字として表示されます。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code># この行はメモです
+say &quot;#KH&quot; # この部分は表示されません</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">#KH</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=console&amp;code=%23+%E3%81%93%E3%81%AE%E8%A1%8C%E3%81%AF%E3%83%A1%E3%83%A2%E3%81%A7%E3%81%99%0Asay+%22%23KH%22+%23+%E3%81%93%E3%81%AE%E9%83%A8%E5%88%86%E3%81%AF%E8%A1%A8%E7%A4%BA%E3%81%95%E3%82%8C%E3%81%BE%E3%81%9B%E3%82%93#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="basics-4" data-entry>
+  <h3><a href="#basics-4">数値</a></h3>
+  <p class="ref-scope">Windows IDE・CLI・ブラウザー版</p>
+  <pre class="ref-syntax"><code>0、42、3.5、.5</code></pre>
+  <p class="ref-description">整数と小数は半角数字で書きます。小数点は .、負の値には先頭に - を使います。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>say 42
+say 3.5
+say .5</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">42
+3.5
+0.5</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=console&amp;code=say+42%0Asay+3.5%0Asay+.5#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="basics-5" data-entry>
+  <h3><a href="#basics-5">文字列</a></h3>
+  <p class="ref-scope">Windows IDE・CLI・ブラウザー版</p>
+  <pre class="ref-syntax"><code>&quot;文字列&quot;</code></pre>
+  <p class="ref-description">文字列は半角の二重引用符で囲みます。文字列内では \n は改行、\t はタブ、\r は復帰、\b は後退、\f は改ページ、\&quot; は引用符、\\ は逆斜線、\/ はスラッシュ、\uXXXX は4桁の16進Unicode表記です。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>say &quot;上の行\n下の行&quot;
+say &quot;\&quot;KH\&quot;\u8A00\u8A9E&quot;</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">上の行
+下の行
+&quot;KH&quot;言語</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=console&amp;code=say+%22%E4%B8%8A%E3%81%AE%E8%A1%8C%5Cn%E4%B8%8B%E3%81%AE%E8%A1%8C%22%0Asay+%22%5C%22KH%5C%22%5Cu8A00%5Cu8A9E%22#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="basics-6" data-entry>
+  <h3><a href="#basics-6">真偽値</a></h3>
+  <p class="ref-scope">Windows IDE・CLI・ブラウザー版</p>
+  <pre class="ref-syntax"><code>true / false</code></pre>
+  <p class="ref-description">条件や比較の結果を表します。true は真、false は偽です。引用符を付けた &quot;true&quot; は文字列です。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>say true
+say false</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">true
+false</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=console&amp;code=say+true%0Asay+false#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="basics-7" data-entry>
+  <h3><a href="#basics-7">値なし</a></h3>
+  <p class="ref-scope">Windows IDE・CLI・ブラウザー版</p>
+  <pre class="ref-syntax"><code>return または関数の終端</code></pre>
+  <p class="ref-description">値を指定せず return した関数や、値を返さず end まで進んだ関数は値なしを返します。say では null と表示されます。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>function 完了()
+    return
+end
+say 完了()</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">null</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=console&amp;code=function+%E5%AE%8C%E4%BA%86%28%29%0A++++return%0Aend%0Asay+%E5%AE%8C%E4%BA%86%28%29#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article>
+</section><section id="operators" data-group>
+<h2>演算子</h2><p class="ref-intro">括弧を除く優先順位は、高い方から単項 + -、* / %、加減算 + -、大小比較、等値比較、not、and、or です。式を読む順番が分かりにくいときは括弧を使えます。</p>
+<article class="ref-entry" id="operators-1" data-entry>
+  <h3><a href="#operators-1">括弧</a></h3>
+  <p class="ref-scope">Windows IDE・CLI・ブラウザー版</p>
+  <pre class="ref-syntax"><code>(式)</code></pre>
+  <p class="ref-description">括弧内の式を先に計算します。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>say 2 + 3 * 4
+say (2 + 3) * 4</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">14
+20</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=console&amp;code=say+2+%2B+3+%2A+4%0Asay+%282+%2B+3%29+%2A+4#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="operators-2" data-entry>
+  <h3><a href="#operators-2">加算・文字列連結</a></h3>
+  <p class="ref-scope">Windows IDE・CLI・ブラウザー版</p>
+  <pre class="ref-syntax"><code>左 + 右</code></pre>
+  <p class="ref-description">両方が数値なら足し算です。片方が文字列なら、もう片方を表示用の文字にして連結します。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>say 2 + 3
+say &quot;人数 &quot; + 3 + &quot;人&quot;</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">5
+人数 3人</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=console&amp;code=say+2+%2B+3%0Asay+%22%E4%BA%BA%E6%95%B0+%22+%2B+3+%2B+%22%E4%BA%BA%22#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="operators-3" data-entry>
+  <h3><a href="#operators-3">減算・単項符号</a></h3>
+  <p class="ref-scope">Windows IDE・CLI・ブラウザー版</p>
+  <pre class="ref-syntax"><code>左 - 右 / -値 / +値</code></pre>
+  <p class="ref-description">数値の差を求めます。数値の前の - は符号を反転し、前の + はその値を返します。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>say 10 - 3
+say -5
+say +5</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">7
+-5
+5</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=console&amp;code=say+10+-+3%0Asay+-5%0Asay+%2B5#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="operators-4" data-entry>
+  <h3><a href="#operators-4">乗算</a></h3>
+  <p class="ref-scope">Windows IDE・CLI・ブラウザー版</p>
+  <pre class="ref-syntax"><code>左 * 右</code></pre>
+  <p class="ref-description">2つの数値を掛けます。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>say 6 * 4</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">24</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=console&amp;code=say+6+%2A+4#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="operators-5" data-entry>
+  <h3><a href="#operators-5">除算</a></h3>
+  <p class="ref-scope">Windows IDE・CLI・ブラウザー版</p>
+  <pre class="ref-syntax"><code>左 / 右</code></pre>
+  <p class="ref-description">数値を割ります。結果は小数になり、0で割るとエラーです。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>say 7 / 2</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">3.5</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=console&amp;code=say+7+%2F+2#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="operators-6" data-entry>
+  <h3><a href="#operators-6">余り</a></h3>
+  <p class="ref-scope">Windows IDE・CLI・ブラウザー版</p>
+  <pre class="ref-syntax"><code>左 % 右</code></pre>
+  <p class="ref-description">数値を割った余りを求めます。右が0ならエラーです。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>say 7 % 3</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">1</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=console&amp;code=say+7+%25+3#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="operators-7" data-entry>
+  <h3><a href="#operators-7">等しい・異なる</a></h3>
+  <p class="ref-scope">Windows IDE・CLI・ブラウザー版</p>
+  <pre class="ref-syntax"><code>左 == 右 / 左 != 右</code></pre>
+  <p class="ref-description">値と種類の両方が一致すれば == は true になります。!= は逆の結果を返します。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>say 2 == 2
+say 2 == &quot;2&quot;
+say &quot;春&quot; != &quot;夏&quot;</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">true
+false
+true</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=console&amp;code=say+2+%3D%3D+2%0Asay+2+%3D%3D+%222%22%0Asay+%22%E6%98%A5%22+%21%3D+%22%E5%A4%8F%22#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="operators-8" data-entry>
+  <h3><a href="#operators-8">大小比較</a></h3>
+  <p class="ref-scope">Windows IDE・CLI・ブラウザー版</p>
+  <pre class="ref-syntax"><code>左 &lt; 右 / 左 &lt;= 右 / 左 &gt; 右 / 左 &gt;= 右</code></pre>
+  <p class="ref-description">数値同士を比較します。&lt;= は以下、&gt;= は以上です。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>say 3 &lt; 5
+say 5 &lt;= 5
+say 3 &gt; 5
+say 5 &gt;= 5</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">true
+true
+false
+true</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=console&amp;code=say+3+%3C+5%0Asay+5+%3C%3D+5%0Asay+3+%3E+5%0Asay+5+%3E%3D+5#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="operators-9" data-entry>
+  <h3><a href="#operators-9">両方が真</a></h3>
+  <p class="ref-scope">Windows IDE・CLI・ブラウザー版</p>
+  <pre class="ref-syntax"><code>左 and 右</code></pre>
+  <p class="ref-description">左と右が真なら true です。左が false の場合は、右側を実行せず false を返します。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>say true and true
+say false and 未定義</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">true
+false</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=console&amp;code=say+true+and+true%0Asay+false+and+%E6%9C%AA%E5%AE%9A%E7%BE%A9#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="operators-10" data-entry>
+  <h3><a href="#operators-10">どちらかが真</a></h3>
+  <p class="ref-scope">Windows IDE・CLI・ブラウザー版</p>
+  <pre class="ref-syntax"><code>左 or 右</code></pre>
+  <p class="ref-description">どちらかが真なら true です。左が true の場合は、右側を実行せず true を返します。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>say false or true
+say true or 未定義</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">true
+true</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=console&amp;code=say+false+or+true%0Asay+true+or+%E6%9C%AA%E5%AE%9A%E7%BE%A9#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="operators-11" data-entry>
+  <h3><a href="#operators-11">真偽の反転</a></h3>
+  <p class="ref-scope">Windows IDE・CLI・ブラウザー版</p>
+  <pre class="ref-syntax"><code>not 式</code></pre>
+  <p class="ref-description">true を false、false を true にします。比較と組み合わせるときは括弧を付けると明確です。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>say not false
+say not (3 &lt; 5)</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">true
+false</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=console&amp;code=say+not+false%0Asay+not+%283+%3C+5%29#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article>
+</section><section id="control" data-group>
+<h2>分岐・繰り返し・関数</h2><p class="ref-intro">分岐・繰り返し・関数は end で閉じます。条件には true または false になる式を書きます。</p>
+<article class="ref-entry" id="control-1" data-entry>
+  <h3><a href="#control-1">if</a></h3>
+  <p class="ref-scope">Windows IDE・CLI・ブラウザー版</p>
+  <pre class="ref-syntax"><code>if 条件 … end</code></pre>
+  <p class="ref-description">条件が true のとき、if から end までの命令を実行します。条件に数値や文字列を置くとエラーです。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>人数 = 3
+if 人数 &gt;= 2
+    say &quot;複数人です&quot;
+end</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">複数人です</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=console&amp;code=%E4%BA%BA%E6%95%B0+%3D+3%0Aif+%E4%BA%BA%E6%95%B0+%3E%3D+2%0A++++say+%22%E8%A4%87%E6%95%B0%E4%BA%BA%E3%81%A7%E3%81%99%22%0Aend#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="control-2" data-entry>
+  <h3><a href="#control-2">else</a></h3>
+  <p class="ref-scope">Windows IDE・CLI・ブラウザー版</p>
+  <pre class="ref-syntax"><code>if 条件 … else … end</code></pre>
+  <p class="ref-description">if の条件が false の場合に実行する命令を、else の後ろに書きます。else は省略できます。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>年齢 = 12
+if 年齢 &gt;= 18
+    say &quot;成人&quot;
+else
+    say &quot;未成年&quot;
+end</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">未成年</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=console&amp;code=%E5%B9%B4%E9%BD%A2+%3D+12%0Aif+%E5%B9%B4%E9%BD%A2+%3E%3D+18%0A++++say+%22%E6%88%90%E4%BA%BA%22%0Aelse%0A++++say+%22%E6%9C%AA%E6%88%90%E5%B9%B4%22%0Aend#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="control-3" data-entry>
+  <h3><a href="#control-3">repeat</a></h3>
+  <p class="ref-scope">Windows IDE・CLI・ブラウザー版</p>
+  <pre class="ref-syntax"><code>repeat 回数 … end</code></pre>
+  <p class="ref-description">指定した回数だけ繰り返します。回数は0から10,000までの整数です。0回なら中の命令を実行しません。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>番号 = 1
+repeat 3
+    say 番号
+    番号 = 番号 + 1
+end</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">1
+2
+3</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=console&amp;code=%E7%95%AA%E5%8F%B7+%3D+1%0Arepeat+3%0A++++say+%E7%95%AA%E5%8F%B7%0A++++%E7%95%AA%E5%8F%B7+%3D+%E7%95%AA%E5%8F%B7+%2B+1%0Aend#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="control-4" data-entry>
+  <h3><a href="#control-4">function</a></h3>
+  <p class="ref-scope">Windows IDE・CLI・ブラウザー版</p>
+  <pre class="ref-syntax"><code>function 名前(引数1, 引数2) … end</code></pre>
+  <p class="ref-description">まとまった処理に名前を付けます。関数定義はファイルの最上位に書きます。引数がなければ () と書きます。関数の中で代入した変数は呼び出しごとのローカル変数です。外の変数は読み取れます。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>function 合計(左, 右)
+    return 左 + 右
+end
+say 合計(3, 4)</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">7</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=console&amp;code=function+%E5%90%88%E8%A8%88%28%E5%B7%A6%2C+%E5%8F%B3%29%0A++++return+%E5%B7%A6+%2B+%E5%8F%B3%0Aend%0Asay+%E5%90%88%E8%A8%88%283%2C+4%29#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="control-5" data-entry>
+  <h3><a href="#control-5">関数の呼び出し</a></h3>
+  <p class="ref-scope">Windows IDE・CLI・ブラウザー版</p>
+  <pre class="ref-syntax"><code>名前(値1, 値2)</code></pre>
+  <p class="ref-description">定義と同じ数の値を順に渡します。呼び出しの結果は式に使えます。表示などを行う関数は、呼び出しだけを1行に書いて実行できます。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>function 挨拶(名前)
+    say &quot;こんにちは、&quot; + 名前
+end
+挨拶(&quot;世界&quot;)</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">こんにちは、世界</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=console&amp;code=function+%E6%8C%A8%E6%8B%B6%28%E5%90%8D%E5%89%8D%29%0A++++say+%22%E3%81%93%E3%82%93%E3%81%AB%E3%81%A1%E3%81%AF%E3%80%81%22+%2B+%E5%90%8D%E5%89%8D%0Aend%0A%E6%8C%A8%E6%8B%B6%28%22%E4%B8%96%E7%95%8C%22%29#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="control-6" data-entry>
+  <h3><a href="#control-6">return</a></h3>
+  <p class="ref-scope">Windows IDE・CLI・ブラウザー版</p>
+  <pre class="ref-syntax"><code>return 式 / return</code></pre>
+  <p class="ref-description">関数の実行をそこで終えます。式があれば呼び出し元に値を返します。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>function 二倍(数)
+    return 数 * 2
+end
+結果 = 二倍(6)
+say 結果</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">12</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=console&amp;code=function+%E4%BA%8C%E5%80%8D%28%E6%95%B0%29%0A++++return+%E6%95%B0+%2A+2%0Aend%0A%E7%B5%90%E6%9E%9C+%3D+%E4%BA%8C%E5%80%8D%286%29%0Asay+%E7%B5%90%E6%9E%9C#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="control-7" data-entry>
+  <h3><a href="#control-7">end</a></h3>
+  <p class="ref-scope">Windows IDE・CLI・ブラウザー版</p>
+  <pre class="ref-syntax"><code>end</code></pre>
+  <p class="ref-description">直前に開いた if、repeat、function を閉じます。入れ子にした場合は、内側のブロックから順番に閉じます。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>repeat 2
+    if true
+        say &quot;実行&quot;
+    end
+end</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">実行
+実行</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=console&amp;code=repeat+2%0A++++if+true%0A++++++++say+%22%E5%AE%9F%E8%A1%8C%22%0A++++end%0Aend#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article>
+</section><section id="web" data-group>
+<h2>ウェブ制作コマンド</h2><p class="ref-intro">ウェブ用コマンドには文字列を渡します。Windows IDEのF8、CLIのweb、またはブラウザー版の「ウェブページ」で使います。</p>
+<article class="ref-entry" id="web-1" data-entry>
+  <h3><a href="#web-1">page（トップページ）</a></h3>
+  <p class="ref-scope">Windows IDEのHTML出力・CLIのweb・ブラウザー版のウェブページ</p>
+  <pre class="ref-syntax"><code>page(&quot;タイトル&quot;, &quot;説明&quot;)</code></pre>
+  <p class="ref-description">index.html を作り、以後の見出しや本文をこのページに追加します。説明は見出しの下とHTMLのメタ説明に使われます。説明を省略したいときは空文字を渡します。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>page(&quot;活動案内&quot;, &quot;地域の活動を紹介します。&quot;)</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">「活動案内」と説明が表示されます。</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=web&amp;code=page%28%22%E6%B4%BB%E5%8B%95%E6%A1%88%E5%86%85%22%2C+%22%E5%9C%B0%E5%9F%9F%E3%81%AE%E6%B4%BB%E5%8B%95%E3%82%92%E7%B4%B9%E4%BB%8B%E3%81%97%E3%81%BE%E3%81%99%E3%80%82%22%29#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="web-2" data-entry>
+  <h3><a href="#web-2">page（追加ページ）</a></h3>
+  <p class="ref-scope">Windows IDEのHTML出力・CLIのweb・ブラウザー版のウェブページ</p>
+  <pre class="ref-syntax"><code>page(&quot;about.html&quot;, &quot;タイトル&quot;, &quot;説明&quot;)</code></pre>
+  <p class="ref-description">指定した名前で追加ページを作ります。最初を半角英数字にし、残りに半角英数字・ハイフン・アンダースコアを使って .html で終えます。同名のページは作れません。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>page(&quot;ホーム&quot;, &quot;活動の紹介です。&quot;)
+link(&quot;私たちについて&quot;, &quot;about.html&quot;)
+page(&quot;about.html&quot;, &quot;私たちについて&quot;, &quot;地域で活動しています。&quot;)
+link(&quot;ホームへ&quot;, &quot;index.html&quot;)</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">「私たちについて」を押すと紹介ページに移ります。Windows IDEとCLIは個別HTMLを生成します。ブラウザー版は単一HTML内でページを切り替えます。</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=web&amp;code=page%28%22%E3%83%9B%E3%83%BC%E3%83%A0%22%2C+%22%E6%B4%BB%E5%8B%95%E3%81%AE%E7%B4%B9%E4%BB%8B%E3%81%A7%E3%81%99%E3%80%82%22%29%0Alink%28%22%E7%A7%81%E3%81%9F%E3%81%A1%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%22%2C+%22about.html%22%29%0Apage%28%22about.html%22%2C+%22%E7%A7%81%E3%81%9F%E3%81%A1%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%22%2C+%22%E5%9C%B0%E5%9F%9F%E3%81%A7%E6%B4%BB%E5%8B%95%E3%81%97%E3%81%A6%E3%81%84%E3%81%BE%E3%81%99%E3%80%82%22%29%0Alink%28%22%E3%83%9B%E3%83%BC%E3%83%A0%E3%81%B8%22%2C+%22index.html%22%29#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="web-3" data-entry>
+  <h3><a href="#web-3">heading</a></h3>
+  <p class="ref-scope">Windows IDEのHTML出力・CLIのweb・ブラウザー版のウェブページ</p>
+  <pre class="ref-syntax"><code>heading(&quot;見出し&quot;)</code></pre>
+  <p class="ref-description">現在のページに見出しを追加します。通常は h2、section() 内では h3 を生成します。ページの主見出し h1 は page() のタイトルです。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>page(&quot;読書会&quot;, &quot;&quot;)
+heading(&quot;次回の開催&quot;)</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">「読書会」の下に「次回の開催」という見出しが表示されます。</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=web&amp;code=page%28%22%E8%AA%AD%E6%9B%B8%E4%BC%9A%22%2C+%22%22%29%0Aheading%28%22%E6%AC%A1%E5%9B%9E%E3%81%AE%E9%96%8B%E5%82%AC%22%29#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="web-4" data-entry>
+  <h3><a href="#web-4">text</a></h3>
+  <p class="ref-scope">Windows IDEのHTML出力・CLIのweb・ブラウザー版のウェブページ</p>
+  <pre class="ref-syntax"><code>text(&quot;本文&quot;)</code></pre>
+  <p class="ref-description">現在のページに段落を追加します。&lt;strong&gt; などを書いても、画面には入力した文字列として表示されます。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>page(&quot;案内&quot;, &quot;&quot;)
+text(&quot;会場は2階です。&quot;)</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">「会場は2階です。」が段落として表示されます。</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=web&amp;code=page%28%22%E6%A1%88%E5%86%85%22%2C+%22%22%29%0Atext%28%22%E4%BC%9A%E5%A0%B4%E3%81%AF2%E9%9A%8E%E3%81%A7%E3%81%99%E3%80%82%22%29#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="web-5" data-entry>
+  <h3><a href="#web-5">link</a></h3>
+  <p class="ref-scope">Windows IDEのHTML出力・CLIのweb・ブラウザー版のウェブページ</p>
+  <pre class="ref-syntax"><code>link(&quot;リンクの文字&quot;, &quot;URL&quot;)</code></pre>
+  <p class="ref-description">現在のページにリンクを置きます。別ページの相対パス、https:// や http:// のURL、mailto:、#から始まるページ内リンクを使えます。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>page(&quot;会場案内&quot;, &quot;&quot;)
+link(&quot;紹介ページ&quot;, &quot;about.html&quot;)
+page(&quot;about.html&quot;, &quot;紹介ページ&quot;, &quot;開催場所の説明です。&quot;)</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">「紹介ページ」をクリックすると、追加したページに移ります。</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=web&amp;code=page%28%22%E4%BC%9A%E5%A0%B4%E6%A1%88%E5%86%85%22%2C+%22%22%29%0Alink%28%22%E7%B4%B9%E4%BB%8B%E3%83%9A%E3%83%BC%E3%82%B8%22%2C+%22about.html%22%29%0Apage%28%22about.html%22%2C+%22%E7%B4%B9%E4%BB%8B%E3%83%9A%E3%83%BC%E3%82%B8%22%2C+%22%E9%96%8B%E5%82%AC%E5%A0%B4%E6%89%80%E3%81%AE%E8%AA%AC%E6%98%8E%E3%81%A7%E3%81%99%E3%80%82%22%29#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="web-6" data-entry>
+  <h3><a href="#web-6">image</a></h3>
+  <p class="ref-scope">Windows IDEのHTML出力・CLIのweb</p>
+  <pre class="ref-syntax"><code>image(&quot;画像のパスまたはURL&quot;, &quot;画像の説明&quot;)</code></pre>
+  <p class="ref-description">画像を置き、読み上げなどで使う代替テキストを指定します。ローカル画像は出力されたフォルダーに別途置きます。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>page(&quot;ギャラリー&quot;, &quot;&quot;)
+image(&quot;photo.jpg&quot;, &quot;会場に飾った花&quot;)</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">出力先に photo.jpg を置くと画像が表示されます。</pre></div>
+  </div>
+  
+</article><article class="ref-entry" id="web-7" data-entry>
+  <h3><a href="#web-7">section</a></h3>
+  <p class="ref-scope">Windows IDEのHTML出力・CLIのweb・ブラウザー版のウェブページ</p>
+  <pre class="ref-syntax"><code>section(&quot;セクション名&quot;)</code></pre>
+  <p class="ref-description">見出し付きのまとまりを開始します。下に書く本文などがそのまとまりに入り、section_end() で閉じます。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>page(&quot;工房&quot;, &quot;&quot;)
+section(&quot;営業案内&quot;)
+text(&quot;土日に開館します。&quot;)
+section_end()</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">「営業案内」の枠内に「土日に開館します。」が表示されます。</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=web&amp;code=page%28%22%E5%B7%A5%E6%88%BF%22%2C+%22%22%29%0Asection%28%22%E5%96%B6%E6%A5%AD%E6%A1%88%E5%86%85%22%29%0Atext%28%22%E5%9C%9F%E6%97%A5%E3%81%AB%E9%96%8B%E9%A4%A8%E3%81%97%E3%81%BE%E3%81%99%E3%80%82%22%29%0Asection_end%28%29#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="web-8" data-entry>
+  <h3><a href="#web-8">section_end</a></h3>
+  <p class="ref-scope">Windows IDEのHTML出力・CLIのweb・ブラウザー版のウェブページ</p>
+  <pre class="ref-syntax"><code>section_end()</code></pre>
+  <p class="ref-description">一番内側の section() を閉じます。引数は不要です。次のページを作る前に、開いているセクションをすべて閉じます。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>page(&quot;工房&quot;, &quot;&quot;)
+section(&quot;予約&quot;)
+text(&quot;予約は前日まで。&quot;)
+section_end()
+text(&quot;お問い合わせは受付へ。&quot;)</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">予約案内は枠内に表示され、問い合わせ案内は枠外に表示されます。</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=web&amp;code=page%28%22%E5%B7%A5%E6%88%BF%22%2C+%22%22%29%0Asection%28%22%E4%BA%88%E7%B4%84%22%29%0Atext%28%22%E4%BA%88%E7%B4%84%E3%81%AF%E5%89%8D%E6%97%A5%E3%81%BE%E3%81%A7%E3%80%82%22%29%0Asection_end%28%29%0Atext%28%22%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B%E3%81%AF%E5%8F%97%E4%BB%98%E3%81%B8%E3%80%82%22%29#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="web-9" data-entry>
+  <h3><a href="#web-9">button</a></h3>
+  <p class="ref-scope">Windows IDEのHTML出力・CLIのweb・ブラウザー版のウェブページ</p>
+  <pre class="ref-syntax"><code>button(&quot;ボタンの文字&quot;, &quot;表示するメッセージ&quot;)</code></pre>
+  <p class="ref-description">押したときに、ボタンの下にメッセージを出す操作を作ります。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>page(&quot;イベント&quot;, &quot;&quot;)
+button(&quot;持ち物を見る&quot;, &quot;筆記用具をお持ちください。&quot;)</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">「持ち物を見る」を押すと「筆記用具をお持ちください。」が表示されます。</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=web&amp;code=page%28%22%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%22%2C+%22%22%29%0Abutton%28%22%E6%8C%81%E3%81%A1%E7%89%A9%E3%82%92%E8%A6%8B%E3%82%8B%22%2C+%22%E7%AD%86%E8%A8%98%E7%94%A8%E5%85%B7%E3%82%92%E3%81%8A%E6%8C%81%E3%81%A1%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%22%29#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="web-10" data-entry>
+  <h3><a href="#web-10">theme</a></h3>
+  <p class="ref-scope">Windows IDEのHTML出力・CLIのweb・ブラウザー版のウェブページ</p>
+  <pre class="ref-syntax"><code>theme(&quot;#RRGGBB&quot;)</code></pre>
+  <p class="ref-description">サイト共通のアクセント色を、# に続く6桁の16進数で指定します。ボタンや見出し周辺に反映されます。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>theme(&quot;#7356a8&quot;)
+page(&quot;色の見本&quot;, &quot;&quot;)
+button(&quot;確認&quot;, &quot;表示できました。&quot;)</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">ボタンやページ上部に紫色のアクセントが付きます。</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=web&amp;code=theme%28%22%237356a8%22%29%0Apage%28%22%E8%89%B2%E3%81%AE%E8%A6%8B%E6%9C%AC%22%2C+%22%22%29%0Abutton%28%22%E7%A2%BA%E8%AA%8D%22%2C+%22%E8%A1%A8%E7%A4%BA%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%97%E3%81%9F%E3%80%82%22%29#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="web-11" data-entry>
+  <h3><a href="#web-11">language</a></h3>
+  <p class="ref-scope">Windows IDEのHTML出力・CLIのweb・ブラウザー版のウェブページ</p>
+  <pre class="ref-syntax"><code>language(&quot;ja&quot;)</code></pre>
+  <p class="ref-description">サイト全体のHTMLに言語を設定します。省略時は ja です。日本語は ja、英語は en、米国英語は en-US などを使えます。本文は入力した言語で表示されます。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>language(&quot;en&quot;)
+page(&quot;Welcome&quot;, &quot;A short example.&quot;)</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">Welcome と表示され、生成HTMLの html 要素に lang=&quot;en&quot; が付きます。</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=web&amp;code=language%28%22en%22%29%0Apage%28%22Welcome%22%2C+%22A+short+example.%22%29#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article><article class="ref-entry" id="web-12" data-entry>
+  <h3><a href="#web-12">css</a></h3>
+  <p class="ref-scope">Windows IDEのHTML出力・CLIのweb</p>
+  <pre class="ref-syntax"><code>css(&quot;CSSの内容&quot;)</code></pre>
+  <p class="ref-description">サイト共通の styles.css に指定したCSSを追記します。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>page(&quot;デザイン見本&quot;, &quot;&quot;)
+text(&quot;背景色が変わります。&quot;)
+css(&quot;body { background: #fff1d6; }&quot;)</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">生成ページの背景色が薄いオレンジになります。</pre></div>
+  </div>
+  
+</article><article class="ref-entry" id="web-13" data-entry>
+  <h3><a href="#web-13">script</a></h3>
+  <p class="ref-scope">Windows IDEのHTML出力・CLIのweb</p>
+  <pre class="ref-syntax"><code>script(&quot;JavaScriptの内容&quot;)</code></pre>
+  <p class="ref-description">サイト共通の app.js に指定したJavaScriptを追記します。追加したJavaScriptは生成したページをブラウザーで開くと実行されます。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>page(&quot;動作見本&quot;, &quot;&quot;)
+script(&quot;console.log(\&quot;KHのページです\&quot;);&quot;)</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">生成ページを開くと、開発者ツールのコンソールに「KHのページです」と表示されます。</pre></div>
+  </div>
+  
+</article><article class="ref-entry" id="web-14" data-entry>
+  <h3><a href="#web-14">use</a></h3>
+  <p class="ref-scope">Windows IDEのHTML出力・CLIのweb</p>
+  <pre class="ref-syntax"><code>use &quot;ファイル名.kh&quot;</code></pre>
+  <p class="ref-description">編集中の .kh と同じフォルダーのファイルを読み込み、その位置に展開します。ファイル名は半角英数字・ハイフン・アンダースコアで指定します。Windows IDEではメインの .kh を保存してからF8を使います。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>【index.kh】
+use &quot;style.kh&quot;
+page(&quot;工房&quot;, &quot;&quot;)
+
+【style.kh】
+theme(&quot;#1e684d&quot;)</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">2つのファイルを同じフォルダーに置いて出力すると、工房ページに緑色のアクセントが付きます。</pre></div>
+  </div>
+  
+</article><article class="ref-entry" id="web-15" data-entry>
+  <h3><a href="#web-15">ウェブ出力の制限</a></h3>
+  <p class="ref-scope">ウェブ出力。use はWindows IDE・CLI。</p>
+  <pre class="ref-syntax"><code>index.html / 最大24ページ / セクションの入れ子は最大12段</code></pre>
+  <p class="ref-description">トップページは1つ必要です。関連ファイルの読み込みは最大8階層・計32回で、循環参照はエラーになります。大きな出力には実行上限もあります。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>page(&quot;ホーム&quot;, &quot;&quot;)
+section(&quot;案内&quot;)
+text(&quot;ここに本文を置きます。&quot;)
+section_end()</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">トップページが1枚作られ、開いたセクションは出力前に閉じられます。</pre></div>
+  </div>
+  <a class="ref-try" href="../?mode=web&amp;code=page%28%22%E3%83%9B%E3%83%BC%E3%83%A0%22%2C+%22%22%29%0Asection%28%22%E6%A1%88%E5%86%85%22%29%0Atext%28%22%E3%81%93%E3%81%93%E3%81%AB%E6%9C%AC%E6%96%87%E3%82%92%E7%BD%AE%E3%81%8D%E3%81%BE%E3%81%99%E3%80%82%22%29%0Asection_end%28%29#playground">ブラウザーで試す <span aria-hidden="true">↗</span></a>
+</article>
+</section><section id="windows" data-group>
+<h2>Windows IDEの操作</h2><p class="ref-intro">Windows 10・11 x64向けの KH_IDE.exe で使う操作です。</p>
+<article class="ref-entry" id="windows-1" data-entry>
+  <h3><a href="#windows-1">新規</a></h3>
+  <p class="ref-scope">Windows IDE</p>
+  <pre class="ref-syntax"><code>Ctrl + N</code></pre>
+  <p class="ref-description">空の .kh ファイルを作ります。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>新規 → コードを書く</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">空の編集欄から書き始められます。</pre></div>
+  </div>
+  
+</article><article class="ref-entry" id="windows-2" data-entry>
+  <h3><a href="#windows-2">開く</a></h3>
+  <p class="ref-scope">Windows IDE</p>
+  <pre class="ref-syntax"><code>Ctrl + O</code></pre>
+  <p class="ref-description">保存済みの .kh を選んで開きます。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>開く → examples/Website/index.kh</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">サンプルのソースが編集欄に表示されます。</pre></div>
+  </div>
+  
+</article><article class="ref-entry" id="windows-3" data-entry>
+  <h3><a href="#windows-3">保存</a></h3>
+  <p class="ref-scope">Windows IDE</p>
+  <pre class="ref-syntax"><code>Ctrl + S</code></pre>
+  <p class="ref-description">現在の内容をUTF-8の .kh として保存します。初回は名前と保存先を指定します。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>保存 → hello.kh</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">hello.kh が作成されます。</pre></div>
+  </div>
+  
+</article><article class="ref-entry" id="windows-4" data-entry>
+  <h3><a href="#windows-4">別名で保存</a></h3>
+  <p class="ref-scope">Windows IDE</p>
+  <pre class="ref-syntax"><code>Ctrl + Shift + S</code></pre>
+  <p class="ref-description">現在の内容を新しいファイル名やフォルダーで保存します。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>別名で保存 → hello-copy.kh</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">同じ内容の別ファイルを作成できます。</pre></div>
+  </div>
+  
+</article><article class="ref-entry" id="windows-5" data-entry>
+  <h3><a href="#windows-5">実行</a></h3>
+  <p class="ref-scope">Windows IDE</p>
+  <pre class="ref-syntax"><code>F5</code></pre>
+  <p class="ref-description">コンソール向けスクリプトを実行します。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>say &quot;こんにちは&quot; を書いて F5</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">「出力と診断」欄に「こんにちは」と表示されます。</pre></div>
+  </div>
+  
+</article><article class="ref-entry" id="windows-6" data-entry>
+  <h3><a href="#windows-6">EXEビルド</a></h3>
+  <p class="ref-scope">Windows IDE</p>
+  <pre class="ref-syntax"><code>F7</code></pre>
+  <p class="ref-description">コンソール向け .kh をWindows x64用の実行ファイルにまとめます。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>examples/Console/Hello.kh を開く → F7 → Hello.exe</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">指定した場所に Hello.exe を作成できます。</pre></div>
+  </div>
+  
+</article><article class="ref-entry" id="windows-7" data-entry>
+  <h3><a href="#windows-7">Webサンプル</a></h3>
+  <p class="ref-scope">Windows IDE</p>
+  <pre class="ref-syntax"><code>Webサンプル ボタン</code></pre>
+  <p class="ref-description">すぐにHTML出力できるサンプルを編集欄に読み込みます。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>Webサンプル → F8</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">そのままWebサイトを書き出せます。</pre></div>
+  </div>
+  
+</article><article class="ref-entry" id="windows-8" data-entry>
+  <h3><a href="#windows-8">HTML出力</a></h3>
+  <p class="ref-scope">Windows IDE</p>
+  <pre class="ref-syntax"><code>F8</code></pre>
+  <p class="ref-description">現在のウェブ向け .kh からHTML・CSS・JavaScriptを出力します。関連ファイルがある場合はメインの .kh と同じフォルダーに置きます。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>Webサンプル → F8 → homepage.html</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">homepage-site に index.html、styles.css、app.js などが生成されます。</pre></div>
+  </div>
+  
+</article><article class="ref-entry" id="windows-9" data-entry>
+  <h3><a href="#windows-9">ブラウザーで開く</a></h3>
+  <p class="ref-scope">Windows IDE</p>
+  <pre class="ref-syntax"><code>ブラウザーで開く ボタン</code></pre>
+  <p class="ref-description">HTML出力が成功した後、最後に生成した index.html を既定のブラウザーで開きます。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>F8で書き出す → ブラウザーで開く</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">生成したWebサイトが開きます。</pre></div>
+  </div>
+  
+</article><article class="ref-entry" id="windows-10" data-entry>
+  <h3><a href="#windows-10">コマンド一覧</a></h3>
+  <p class="ref-scope">Windows IDE</p>
+  <pre class="ref-syntax"><code>F1</code></pre>
+  <p class="ref-description">IDE内で命令・演算子・操作を、説明と使用例付きで確認できます。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>F1 → コマンドを確認する</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">IDEのコマンドリファレンスが開きます。</pre></div>
+  </div>
+  
+</article>
+</section><section id="browser" data-group>
+<h2>ブラウザー版IDEの操作</h2><p class="ref-intro">Windows・Mac・Linuxで使えます。ウェブページとコンソールにはそれぞれ編集欄があり、実行結果を同じ画面で確認できます。</p>
+<article class="ref-entry" id="browser-1" data-entry>
+  <h3><a href="#browser-1">モードを選ぶ</a></h3>
+  <p class="ref-scope">ブラウザー版IDE</p>
+  <pre class="ref-syntax"><code>ウェブページ / コンソール</code></pre>
+  <p class="ref-description">ウェブの見た目を見る場合は「ウェブページ」、say の出力を読む場合は「コンソール」を選びます。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>コンソール → say &quot;こんにちは&quot;</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">実行結果に「こんにちは」と表示されます。</pre></div>
+  </div>
+  
+</article><article class="ref-entry" id="browser-2" data-entry>
+  <h3><a href="#browser-2">実行</a></h3>
+  <p class="ref-scope">ブラウザー版IDE</p>
+  <pre class="ref-syntax"><code>実行 / Ctrl + Enter / ⌘ + Enter</code></pre>
+  <p class="ref-description">現在のコードを実行します。キーボード操作は編集欄で使えます。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>ウェブページ → page(&quot;こんにちは&quot;, &quot;&quot;) → 実行</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">実行結果の領域にページが表示されます。</pre></div>
+  </div>
+  
+</article><article class="ref-entry" id="browser-3" data-entry>
+  <h3><a href="#browser-3">リセット</a></h3>
+  <p class="ref-scope">ブラウザー版IDE</p>
+  <pre class="ref-syntax"><code>リセット ボタン</code></pre>
+  <p class="ref-description">現在のモードのコードを最初のサンプルに戻します。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>コンソール → リセット</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">コンソールの初期サンプルが表示されます。</pre></div>
+  </div>
+  
+</article><article class="ref-entry" id="browser-4" data-entry>
+  <h3><a href="#browser-4">コピー</a></h3>
+  <p class="ref-scope">ブラウザー版IDE</p>
+  <pre class="ref-syntax"><code>コピー ボタン</code></pre>
+  <p class="ref-description">現在のコードをクリップボードにコピーします。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>コピー → 任意のテキストエディターに貼り付ける</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">入力したコードを貼り付けられます。</pre></div>
+  </div>
+  
+</article><article class="ref-entry" id="browser-5" data-entry>
+  <h3><a href="#browser-5">.kh を開く</a></h3>
+  <p class="ref-scope">ブラウザー版IDE</p>
+  <pre class="ref-syntax"><code>.kh を開く ボタン</code></pre>
+  <p class="ref-description">UTF-8で保存した .kh を現在のモードで開きます。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>ウェブページ → .kh を開く → index.kh</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">ファイルの中身が編集欄に表示されます。</pre></div>
+  </div>
+  
+</article><article class="ref-entry" id="browser-6" data-entry>
+  <h3><a href="#browser-6">.kh を保存</a></h3>
+  <p class="ref-scope">ブラウザー版IDE</p>
+  <pre class="ref-syntax"><code>.kh を保存 ボタン</code></pre>
+  <p class="ref-description">現在のコードをUTF-8の .kh としてダウンロードします。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>コードを書く → .kh を保存</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">現在のファイル名で .kh を保存できます。</pre></div>
+  </div>
+  
+</article><article class="ref-entry" id="browser-7" data-entry>
+  <h3><a href="#browser-7">HTMLを保存</a></h3>
+  <p class="ref-scope">ブラウザー版IDE</p>
+  <pre class="ref-syntax"><code>HTMLを保存 ボタン</code></pre>
+  <p class="ref-description">ウェブページモードでコードを実行し、生成したページを単一のHTMLとして保存します。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>ウェブページ → HTMLを保存</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">スタイルとボタンの動作を含んだ .html が保存されます。</pre></div>
+  </div>
+  
+</article>
+</section><section id="cli" data-group>
+<h2>Mac・Linux向けCLI</h2><p class="ref-intro">macOSではCコンパイラーとmakeでビルドします。Linux x64では同梱の ./linux-x64/kh も使えます。下の例は、配布ZIPの展開先で実行します。</p>
+<article class="ref-entry" id="cli-1" data-entry>
+  <h3><a href="#cli-1">ビルド</a></h3>
+  <p class="ref-scope">Mac・Linux向けCLI</p>
+  <pre class="ref-syntax"><code>make</code></pre>
+  <p class="ref-description">同梱のCソースからターミナル用の kh を作ります。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>make</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">カレントフォルダーに kh が作成されます。</pre></div>
+  </div>
+  
+</article><article class="ref-entry" id="cli-2" data-entry>
+  <h3><a href="#cli-2">run</a></h3>
+  <p class="ref-scope">Mac・Linux向けCLI</p>
+  <pre class="ref-syntax"><code>./kh run script.kh</code></pre>
+  <p class="ref-description">コンソール向け .kh を実行し、say の結果をターミナルに出します。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>./kh run examples/Console/Hello.kh</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">日本語のあいさつなど、スクリプトが出力した内容を確認できます。</pre></div>
+  </div>
+  
+</article><article class="ref-entry" id="cli-3" data-entry>
+  <h3><a href="#cli-3">web</a></h3>
+  <p class="ref-scope">Mac・Linux向けCLI</p>
+  <pre class="ref-syntax"><code>./kh web index.kh 出力先</code></pre>
+  <p class="ref-description">ウェブ向け .kh から公開用サイトを生成します。出力先には新しいフォルダー名を指定します。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>./kh web examples/Website/index.kh my-site</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">my-site に index.html、about.html、styles.css、app.js ができます。</pre></div>
+  </div>
+  
+</article><article class="ref-entry" id="cli-4" data-entry>
+  <h3><a href="#cli-4">--version</a></h3>
+  <p class="ref-scope">Mac・Linux向けCLI</p>
+  <pre class="ref-syntax"><code>./kh --version</code></pre>
+  <p class="ref-description">使っているCLIのバージョンを表示します。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>./kh --version</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">KH 0.3</pre></div>
+  </div>
+  
+</article><article class="ref-entry" id="cli-5" data-entry>
+  <h3><a href="#cli-5">--help</a></h3>
+  <p class="ref-scope">Mac・Linux向けCLI</p>
+  <pre class="ref-syntax"><code>./kh --help</code></pre>
+  <p class="ref-description">CLIで使う主なコマンドと書式を表示します。</p>
+  <div class="ref-pair">
+    <div><h4>入力例</h4><pre><code>./kh --help</code></pre></div>
+    <div><h4>結果・動作</h4><pre class="ref-result">run、web、--version の使い方が表示されます。</pre></div>
+  </div>
+  
+</article>
+</section>
+</div>
+</div>
+</main>
+<footer class="site-footer"><div class="shell footer-inner">
+<a class="brand" href="../"><img src="../assets/kh.svg" width="30" height="30" alt=""><span>KH<span class="brand-ja">言語</span></span></a>
+<a class="top-link" href="#top">ページの先頭へ <span aria-hidden="true">↑</span></a>
+</div></footer>
+</body>
+</html>
